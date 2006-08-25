@@ -1,0 +1,10 @@
+=======================================
+Revision history for WebService-YouTube
+=======================================
+
+0.01    2006-08-25
+    - Modified to accept a video ID at W::Y::Util#get_video_uri.
+    - Added the ForceArray option for ``*_list`` elements.
+    - Added youtube.videos.get_details support.
+    - Added youtube.videos.list_featured support.
+    - Added RSS support.
