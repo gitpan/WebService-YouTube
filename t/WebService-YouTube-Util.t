@@ -1,23 +1,49 @@
 #!/usr/bin/env perl
 #
-# $Revision: 29 $
+# $Revision: 133 $
 # $Source$
-# $Date: 2006-08-14 17:39:31 +0900 (Mon, 14 Aug 2006) $
+# $Date: 2006-09-10 14:30:19 +0900 (Sun, 10 Sep 2006) $
 #
 use strict;
 use warnings;
 use version;
-our $VERSION = version->new(qw$Revision: 29 $);
+our $VERSION = version->new(qw$Revision: 133 $);
 
 use blib;
-use Test::More tests => 2;
+use Test::More tests => 5;
 
 use WebService::YouTube::Util;
-use WebService::YouTube::Video;
 
-can_ok( 'WebService::YouTube::Util', qw(new get_video_uri get_video) );
-my $util = WebService::YouTube::Util->new;
+can_ok(
+    'WebService::YouTube::Util', qw(
+      rss_uri
+      rest_uri
+      get_video_uri
+      get_video
+      )
+);
+is(
+    WebService::YouTube::Util->rss_uri( 'global', 'arg' ),
+    'http://www.youtube.com/rss/global/arg.rss',
+    'rss_uri'
+);
+is(
+    WebService::YouTube::Util->rest_uri(
+        'dev_id', 'method', { key => 'value' }
+    ),
+    'http://www.youtube.com/api2_rest?dev_id=dev_id&method=method&key=value',
+    'rest_uri'
+);
 
-my $video = WebService::YouTube::Video->new( { id => 'pv5zWaTEVkI' } );
-my $uri = $util->get_video_uri($video);
-ok( $uri, 'get URI of the video' );
+SKIP: {
+    if ( !$ENV{TEST_YOUTUBE} ) {
+        skip 'set TEST_YOUTUBE for testing WebService::YouTube::Videos', 1;
+    }
+    ok( WebService::YouTube::Util->get_video_uri('rdwz7QiG0lk'),
+        'Got URI of the video' );
+}
+
+SKIP: {
+    skip 'It takes a long time', 1;
+    ok( WebService::YouTube::Util->get_video('rdwz7QiG0lk'), 'Got the video' );
+}

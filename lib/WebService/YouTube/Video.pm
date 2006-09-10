@@ -1,44 +1,37 @@
 #
-# $Revision: 42 $
+# $Revision: 133 $
 # $Source$
-# $Date: 2006-08-25 14:24:43 +0900 (Fri, 25 Aug 2006) $
+# $Date: 2006-09-10 14:30:19 +0900 (Sun, 10 Sep 2006) $
 #
 package WebService::YouTube::Video;
 use strict;
 use warnings;
 use version;
-our $VERSION = version->new(qw$Revision: 42 $);
+our $VERSION = version->new(qw$Revision: 133 $);
 
 use base qw(Class::Accessor::Fast);
 
-# derived from youtube.videos.get_details
 __PACKAGE__->mk_accessors(
     qw(
       author
-      title
+      channel_list
+      comment_count
+      comment_list
+      description
+      id
+      length_seconds
       rating_avg
       rating_count
-      tags
-      description
-      update_time
-      view_count
-      upload_time
-      length_seconds
+      recording_country
       recording_date
       recording_location
-      recording_country
-      comment_list
-      channel_list
+      tags
       thumbnail_url
-      )
-);
-
-# derived from youtube.videos.list_featured
-__PACKAGE__->mk_accessors(
-    qw(
-      id
-      comment_count
+      title
+      update_time
+      upload_time
       url
+      view_count
       )
 );
 
@@ -48,11 +41,11 @@ __END__
 
 =head1 NAME
 
-WebService::YouTube::Video - Video class for WebService::YouTube
+WebService::YouTube::Video - Video class for YouTube.
 
 =head1 VERSION
 
-This document describes WebService::YouTube::Video $Revision: 42 $
+This document describes WebService::YouTube::Video $Revision: 133 $
 
 =head1 SYNOPSIS
 
@@ -74,7 +67,7 @@ Creates and returns a new WebService::YouTube::Video object.
 
 =over
 
-=item id : Video ID
+=item id
 
 =item author
 

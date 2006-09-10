@@ -1,14 +1,14 @@
 #!/usr/bin/env perl
 #
-# $Revision: 28 $
+# $Revision: 135 $
 # $Source$
-# $Date: 2006-08-14 16:09:44 +0900 (Mon, 14 Aug 2006) $
+# $Date: 2006-09-10 14:55:11 +0900 (Sun, 10 Sep 2006) $
 #
 use strict;
 use warnings;
 our $VERSION = eval {
     require version;
-    version->new(qw$Revision: 28 $);
+    version->new(qw$Revision: 135 $);
 };
 
 use inc::Module::Install;
@@ -18,12 +18,14 @@ eval {
 };
 
 name 'WebService-YouTube';
-version '0.01';
+version '0.02';
 all_from 'lib/WebService/YouTube.pm';
 
-requires 'version'               => 0;
-requires 'Class::Accessor::Fast' => 0;
-requires 'LWP::Simple'           => 0;
-requires 'XML::Simple'           => 0;
+requires 'version';
+requires 'Class::Accessor::Fast';
+requires 'HTTP::Date';
+requires 'LWP::UserAgent';
+requires 'URI::Escape';
+requires 'XML::Simple';
 
 WriteAll;

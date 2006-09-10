@@ -1,22 +1,23 @@
 #!/usr/bin/env perl
 #
-# $Revision: 29 $
+# $Revision: 125 $
 # $Source$
-# $Date: 2006-08-14 17:39:31 +0900 (Mon, 14 Aug 2006) $
+# $Date: 2006-09-09 21:11:19 +0900 (Sat, 09 Sep 2006) $
 #
 use strict;
 use warnings;
 use version;
-our $VERSION = version->new(qw$Revision: 29 $);
+our $VERSION = version->new(qw$Revision: 125 $);
 
 use blib;
-use Test::More tests => 3;
+use Test::More tests => 6;
 
 use WebService::YouTube::Video;
 
 can_ok( 'WebService::YouTube::Video', qw(new) );
 
 my $video = WebService::YouTube::Video->new;
+isa_ok( $video, 'WebService::YouTube::Video' );
 
 # derived from youtube.videos.get_details
 can_ok(
@@ -36,6 +37,44 @@ can_ok(
       recording_country
       comment_list
       channel_list
+      thumbnail_url
+      )
+);
+
+# derived from youtube.videos.list_by_tag
+can_ok(
+    $video, qw(
+      author
+      id
+      title
+      length_seconds
+      rating_avg
+      rating_count
+      description
+      view_count
+      upload_time
+      comment_count
+      tags
+      url
+      thumbnail_url
+      )
+);
+
+# derived from youtube.videos.list_by_user
+can_ok(
+    $video, qw(
+      author
+      id
+      title
+      length_seconds
+      rating_avg
+      rating_count
+      description
+      view_count
+      upload_time
+      comment_count
+      tags
+      url
       thumbnail_url
       )
 );

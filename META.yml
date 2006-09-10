@@ -1,7 +1,7 @@
 abstract: Perl interfece to YouTube
 author: Hironori Yoshida C<< <yoshida@cpan.org> >>
 distribution_type: module
-generated_by: Module::Install version 0.630
+generated_by: Module::Install version 0.640
 license: perl
 name: WebService-YouTube
 no_index: 
@@ -10,7 +10,9 @@ no_index:
     - t
 requires: 
   Class::Accessor::Fast: 0
-  LWP::Simple: 0
+  HTTP::Date: 0
+  LWP::UserAgent: 0
+  URI::Escape: 0
   XML::Simple: 0
   version: 0
-version: 0.01
+version: 0.02

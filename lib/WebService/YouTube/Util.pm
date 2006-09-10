@@ -1,27 +1,66 @@
 #
-# $Revision: 42 $
+# $Revision: 137 $
 # $Source$
-# $Date: 2006-08-25 14:24:43 +0900 (Fri, 25 Aug 2006) $
+# $Date: 2006-09-10 15:37:47 +0900 (Sun, 10 Sep 2006) $
 #
 package WebService::YouTube::Util;
 use strict;
 use warnings;
 use version;
-our $VERSION = version->new(qw$Revision: 42 $);
+our $VERSION = version->new(qw$Revision: 137 $);
 
-use LWP::Simple;
+use Carp;
+use LWP::UserAgent;
+use URI::Escape qw(uri_escape uri_escape_utf8);
 
-sub new {
-    return bless {}, shift;
+sub rss_uri {
+    my ( $class, $type, $arg ) = @_;
+
+    if ( $type ne 'global' && $type ne 'tag' && $type ne 'user' ) {
+        croak "type of $type is not supported";
+    }
+
+    if ( utf8::is_utf8($arg) ) {
+        $arg = uri_escape_utf8($arg);
+    }
+    else {
+        $arg = uri_escape($arg);
+    }
+
+    if ( $type eq 'user' ) {
+        $arg = lc $arg . '/videos';
+    }
+    return "http://www.youtube.com/rss/$type/$arg.rss";
+}
+
+sub rest_uri {
+    my ( $class, $dev_id, $method, $fields ) = @_;
+
+    my $query = q{};
+    if ($fields) {
+        foreach my $key ( keys %{$fields} ) {
+            my $value = $fields->{$key};
+            if ( utf8::is_utf8($value) ) {
+                $value = uri_escape_utf8($value);
+            }
+            else {
+                $value = uri_escape($value);
+            }
+            $query .= sprintf '&%s=%s', $key, $value;
+        }
+    }
+    return
+      "http://www.youtube.com/api2_rest?dev_id=$dev_id&method=$method$query";
 }
 
 sub get_video_uri {
-    my $self = shift;
-    my ($video) = @_;
+    my ( $class, $video, $args ) = @_;
 
     if ( !$video ) {
         return;
     }
+
+    $args->{ua} ||= LWP::UserAgent->new;
 
     my ( $video_id, $video_uri );
     if ( ref $video ) {
@@ -33,38 +72,43 @@ sub get_video_uri {
     }
     $video_uri ||= "http://youtube.com/?v=$video_id";
 
-    my $content = get($video_uri);
-    if ( !$content ) {
-        warn "$video_id: could not get a page of video";
+    my $res = $args->{ua}->get($video_uri);
+    if ( !$res->is_success ) {
+        carp $res->status_line;
         return;
     }
+
+    my $content = $res->content;
     if ( $content =~ m{"/player2\.swf\?([^"]+)",\s*"movie_player"}msx ) {
         return "http://youtube.com/get_video.php?$1";
     }
-
     if ( $content =~ m{class="errorBox"[^>]*>\s*([^<]+?)\s*<}msx ) {
-        warn "$video_id: $1";
+        carp "$video_id: $1";
         return;
     }
-
-    warn "$video_id: get a page but unknown error occurred at\n$content";
+    carp "$video_id: got a page but it is invalid page\n$content";
     return;
 }
 
 sub get_video {
-    my $self = shift;
-    my ($video) = @_;
+    my ( $class, $video, $args ) = @_;
 
     if ( !$video ) {
         return;
     }
 
-    my $video_uri = $self->get_video_uri($video);
+    $args->{ua} ||= LWP::UserAgent->new;
+
+    my $video_uri = $class->get_video_uri( $video, $args );
     if ( !$video_uri ) {
         return;
     }
-
-    return get($video_uri);
+    my $res = $args->{ua}->get($video_uri);
+    if ( !$res->is_success ) {
+        carp $res->status_line;
+        return;
+    }
+    return $res->content;
 }
 
 1;
@@ -77,36 +121,85 @@ WebService::YouTube::Util - Utility for WebService::YouTube
 
 =head1 VERSION
 
-This document describes WebService::YouTube::Util $Revision: 42 $
+This document describes WebService::YouTube::Util $Revision: 137 $
 
 =head1 SYNOPSIS
 
     use WebService::YouTube::Util;
-    my $util = WebService::YouTube::Util->new;
+    
+    # Get an URI of RSS
+    my $uri = WebService::YouTube::Util->rss_uri( 'global', 'recently_added' );
+    
+    # Get an URI of REST API
+    my $uri = WebService::YouTube::Util->rest_uri( $dev_id,
+                                                   'youtube.videos.list_by_tag',
+                                                   { tag => 'monkey' }
+                                                 );
+    
+    # Get a downloadable URI
+    my $uri = WebService::YouTube::Util->get_video_uri('rdwz7QiG0lk');
+    
+    # Get a video which type is .flv
+    my $content = WebService::YouTube::Util->get_video('rdwz7QiG0lk');
 
 =head1 DESCRIPTION
 
-This is a utility for WebService::YouTube.
+This is an utility for L<WebService::YouTube>.
 
 =head1 SUBROUTINES/METHODS
 
-=head2 new( )
+=head2 rss_uri( $type, $arg )
 
-Creates and returns a new WebService::YouTube::Util object.
+Returns a URI of RSS.
+$type should be 'global' or 'tag' or 'user'.
+$arg is required when $type is 'tag' or 'user'.
 
-=head2 get_video_uri( $video )
+=head2 rest_uri( $dev_id, $method, \%fields )
+
+Returns a URI of REST API.
+$dev_id is your developer ID of YouTube.
+$method is a method name like a 'youtube.*.*'.
+%fields can contain optional parameter.
+
+=head2 get_video_uri( $video, \%args )
 
 Returns a downloadable URI of $video.
-$video should be a video ID or WebService::YouTube::Video object.
+$video should be a video ID or a L<WebService::YouTube::Video> object.
+%args can contain some optional arguments.
 
-=head2 get_video( $video )
+=over
+
+=item ua
+
+L<LWP::UserAgent> object
+
+=back
+
+=head2 get_video( $video, \%args )
 
 Returns a downloaded content of $video.
-$video should be a video ID or WebService::YouTube::Video object.
+$video should be a video ID or a L<WebService::YouTube::Video> object.
+%args can contain some optional arguments.
+
+=over
+
+=item ua
+
+L<LWP::UserAgent> object
+
+=back
 
 =head1 DIAGNOSTICS
 
 =over
+
+=item type of ... is not supported
+
+No such RSS. The type should be 'global' or 'tag' or 'user'.
+
+=item got a page but it is invalid page
+
+Maybe, YouTube is being maintained. :-)
 
 =back
 
@@ -116,7 +209,7 @@ WebService::YouTube::Util requires no configuration files or environment variabl
 
 =head1 DEPENDENCIES
 
-L<WebService::YouTube>, L<LWP::Simple>
+L<WebService::YouTube>, L<LWP::UserAgent>, L<URI::Escape>
 
 =head1 INCOMPATIBILITIES
 
