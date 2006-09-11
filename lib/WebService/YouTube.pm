@@ -1,13 +1,12 @@
 #
-# $Revision: 137 $
+# $Revision: 139 $
 # $Source$
-# $Date: 2006-09-10 15:37:47 +0900 (Sun, 10 Sep 2006) $
+# $Date: 2006-09-11 13:38:53 +0900 (Mon, 11 Sep 2006) $
 #
 package WebService::YouTube;
 use strict;
 use warnings;
-use version;
-our $VERSION = version->new(qw$Revision: 137 $);
+use version; our $VERSION = qv( (qw$Revision: 139 $)[1] / 1000 );
 
 use base qw(Class::Accessor::Fast);
 
@@ -146,7 +145,7 @@ WebService::YouTube - Perl interfece to YouTube
 
 =head1 VERSION
 
-This document describes WebService::YouTube $Revision: 137 $
+This document describes WebService::YouTube $Revision: 139 $
 
 =head1 SYNOPSIS
 
@@ -273,7 +272,7 @@ Please use L<WebService::YouTube::Feeds/top_viewed_week>.
 
 =item This is deprecated. Please see the document.
 
-Some method have been deprecated at Version 0.02.
+Some method have been deprecated in Version 0.02.
 
 =back
 

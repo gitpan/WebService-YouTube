@@ -1,13 +1,12 @@
 #!/usr/bin/env perl
 #
-# $Revision: 131 $
+# $Revision: 139 $
 # $Source$
-# $Date: 2006-09-10 11:34:56 +0900 (Sun, 10 Sep 2006) $
+# $Date: 2006-09-11 13:38:53 +0900 (Mon, 11 Sep 2006) $
 #
 use strict;
 use warnings;
-use version;
-our $VERSION = version->new(qw$Revision: 131 $);
+use version; our $VERSION = qv( (qw$Revision: 139 $)[1] / 1000 );
 
 use blib;
 use Test::More tests => 6;

@@ -2,6 +2,10 @@
 Revision history for WebService-YouTube
 =======================================
 
+0.03    2006-09-11
+    - Fixed the specification of the version number.
+    - Added Module::Build support.
+    - Added Module::AutoInstall support.
 0.02    2006-09-10
     - Changed the interface of WebService-YouTube dramatically.
     - Added WebService::YouTube::Videos
