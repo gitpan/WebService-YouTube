@@ -1,14 +1,14 @@
 abstract: Perl interfece to YouTube
-author: Hironori Yoshida C<< <yoshida@cpan.org> >>
+author: 'Hironori Yoshida C<< <yoshida@cpan.org> >>'
 distribution_type: module
 generated_by: Module::Install version 0.640
 license: perl
 name: WebService-YouTube
-no_index: 
-  directory: 
+no_index:
+  directory:
     - inc
     - t
-requires: 
+requires:
   Class::Accessor::Fast: 0
   HTTP::Date: 0
   LWP::UserAgent: 0
@@ -16,4 +16,4 @@ requires:
   XML::Simple: 0
   perl: 5.6.0
   version: 0
-version: 0.03
+version: 0.04
