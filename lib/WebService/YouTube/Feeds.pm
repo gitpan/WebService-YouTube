@@ -1,12 +1,10 @@
 #
-# $Revision: 139 $
-# $Source$
-# $Date: 2006-09-11 13:38:53 +0900 (Mon, 11 Sep 2006) $
+# $Id: Feeds.pm 2 2007-01-07 14:27:35Z hironori.yoshida $
 #
 package WebService::YouTube::Feeds;
 use strict;
 use warnings;
-use version; our $VERSION = qv( (qw$Revision: 139 $)[1] / 1000 );
+use version; our $VERSION = qv('1.0.0');
 
 use Carp;
 use HTTP::Date;
@@ -178,7 +176,7 @@ WebService::YouTube::Feeds - Perl interfece to YouTube RSS Feeds
 
 =head1 VERSION
 
-This document describes WebService::YouTube::Feeds $Revision: 139 $
+This document describes WebService::YouTube::Feeds version 1.0.0
 
 =head1 SYNOPSIS
 

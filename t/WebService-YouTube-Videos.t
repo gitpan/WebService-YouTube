@@ -1,15 +1,13 @@
 #!/usr/bin/env perl
 #
-# $Revision: 139 $
-# $Source$
-# $Date: 2006-09-11 13:38:53 +0900 (Mon, 11 Sep 2006) $
+# $Id: WebService-YouTube-Videos.t 2 2007-01-07 14:27:35Z hironori.yoshida $
 #
 use strict;
 use warnings;
-use version; our $VERSION = qv( (qw$Revision: 139 $)[1] / 1000 );
+use version; our $VERSION = qv('1.0.0');
 
 use blib;
-use Test::More tests => 6;
+use Test::Base tests => 7;
 
 use WebService::YouTube::Videos;
 
@@ -26,7 +24,7 @@ can_ok(
 
 SKIP: {
     if ( !$ENV{TEST_YOUTUBE} ) {
-        skip 'set TEST_YOUTUBE for testing WebService::YouTube::Videos', 4;
+        skip 'set TEST_YOUTUBE for testing WebService::YouTube::Videos', 5;
     }
     my $api =
       WebService::YouTube::Videos->new( { dev_id => $ENV{TEST_YOUTUBE} } );
@@ -38,6 +36,9 @@ SKIP: {
 
     @videos = $api->list_by_tag('feature film documentary');
     cmp_ok( @videos, q{>}, 0, 'youtube.videos.list_by_tag' );
+
+    @videos = $api->list_by_tag('javascript json api jsonscriptrequest');
+    cmp_ok( @videos, q{==}, 1, 'video_list has only one video' );
 
     my $video = $api->get_details( $videos[0] );
     ok( $video, 'youtube.videos.get_details' );

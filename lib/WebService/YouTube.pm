@@ -1,12 +1,10 @@
 #
-# $Revision: 139 $
-# $Source$
-# $Date: 2006-09-11 13:38:53 +0900 (Mon, 11 Sep 2006) $
+# $Id: YouTube.pm 2 2007-01-07 14:27:35Z hironori.yoshida $
 #
 package WebService::YouTube;
 use strict;
 use warnings;
-use version; our $VERSION = qv( (qw$Revision: 139 $)[1] / 1000 );
+use version; our $VERSION = qv('1.0.0');
 
 use base qw(Class::Accessor::Fast);
 
@@ -30,111 +28,6 @@ sub feeds {
     return $self->{_feeds};
 }
 
-sub parse_xml {
-    my ( $self, $xml ) = @_;
-
-    carp 'This is deprecated. Please see the document.';
-    return WebService::YouTube::Videos->new($self)->parse_xml($xml);
-}
-
-sub videos_list_featured {
-    my $self = shift;
-
-    carp 'This is deprecated. Please see the document.';
-    return WebService::YouTube::Videos->new($self)->list_featured;
-}
-
-sub videos_get_details {
-    my ( $self, $video_id ) = @_;
-
-    carp 'This is deprecated. Please see the document.';
-    return WebService::YouTube::Videos->new($self)->get_details($video_id);
-}
-
-sub parse_rss {
-    my ( $self, $rss ) = @_;
-
-    carp 'This is deprecated. Please see the document.';
-    return WebService::YouTube::Feeds->new($self)->parse_rss($rss);
-}
-
-sub recently_added {
-    my $self = shift;
-
-    carp 'This is deprecated. Please see the document.';
-    return WebService::YouTube::Feeds->new($self)->recently_added;
-}
-
-sub recently_featured {
-    my $self = shift;
-
-    carp 'This is deprecated. Please see the document.';
-    return WebService::YouTube::Feeds->new($self)->recently_featured;
-}
-
-sub top_favorites {
-    my $self = shift;
-
-    carp 'This is deprecated. Please see the document.';
-    return WebService::YouTube::Feeds->new($self)->top_favorites;
-}
-
-sub top_rated {
-    my $self = shift;
-
-    carp 'This is deprecated. Please see the document.';
-    return WebService::YouTube::Feeds->new($self)->top_rated;
-}
-
-sub most_discussed_month {
-    my $self = shift;
-
-    carp 'This is deprecated. Please see the document.';
-    return WebService::YouTube::Feeds->new($self)->most_discussed_month;
-}
-
-sub most_discussed_today {
-    my $self = shift;
-
-    carp 'This is deprecated. Please see the document.';
-    return WebService::YouTube::Feeds->new($self)->most_discussed_today;
-}
-
-sub most_discussed_week {
-    my $self = shift;
-
-    carp 'This is deprecated. Please see the document.';
-    return WebService::YouTube::Feeds->new($self)->most_discussed_week;
-}
-
-sub top_viewed {
-    my $self = shift;
-
-    carp 'This is deprecated. Please see the document.';
-    return WebService::YouTube::Feeds->new($self)->top_viewed;
-}
-
-sub top_viewed_month {
-    my $self = shift;
-
-    carp 'This is deprecated. Please see the document.';
-    return WebService::YouTube::Feeds->new($self)->top_viewed_month;
-}
-
-sub top_viewed_today {
-    my $self = shift;
-
-    carp 'This is deprecated. Please see the document.';
-    return WebService::YouTube::Feeds->new($self)->top_viewed_today;
-}
-
-sub top_viewed_week {
-    my $self = shift;
-
-    carp 'This is deprecated. Please see the document.';
-    return WebService::YouTube::Feeds->new($self)->top_viewed_week;
-}
-
 1;
 
 __END__
@@ -145,7 +38,7 @@ WebService::YouTube - Perl interfece to YouTube
 
 =head1 VERSION
 
-This document describes WebService::YouTube $Revision: 139 $
+This document describes WebService::YouTube version 1.0.0
 
 =head1 SYNOPSIS
 
@@ -189,92 +82,9 @@ Developer ID
 
 L<LWP::UserAgent> object
 
-=head1 DEPRECATED SUBROUTINES/METHODS
-
-=head2 parse_xml($xml)
-
-This is deprecated.
-Please use L<WebService::YouTube::Videos/parse_xml>.
-
-=head2 videos_list_featured( )
-
-This is deprecated.
-Please use L<WebService::YouTube::Videos/list_featured>.
-
-=head2 videos_get_details( $video_id )
-
-This is deprecated.
-Please use L<WebService::YouTube::Videos/get_details>.
-
-=head2 parse_rss($rss)
-
-This is deprecated.
-Please use L<WebService::YouTube::Feeds/parse_rss>.
-
-=head2 recently_added( )
-
-This is deprecated.
-Please use L<WebService::YouTube::Feeds/recently_added>.
-
-=head2 recently_featured( )
-
-This is deprecated.
-Please use L<WebService::YouTube::Feeds/recently_featured>.
-
-=head2 top_favorites( )
-
-This is deprecated.
-Please use L<WebService::YouTube::Feeds/top_favorites>.
-
-=head2 top_rated( )
-
-This is deprecated.
-Please use L<WebService::YouTube::Feeds/top_rated>.
-
-=head2 most_discussed_month( )
-
-This is deprecated.
-Please use L<WebService::YouTube::Feeds/most_discussed_month>.
-
-=head2 most_discussed_today( )
-
-This is deprecated.
-Please use L<WebService::YouTube::Feeds/most_discussed_today>.
-
-=head2 most_discussed_week( )
-
-This is deprecated.
-Please use L<WebService::YouTube::Feeds/most_discussed_week>.
-
-=head2 top_viewed( )
-
-This is deprecated.
-Please use L<WebService::YouTube::Feeds/top_viewed>.
-
-=head2 top_viewed_month( )
-
-This is deprecated.
-Please use L<WebService::YouTube::Feeds/top_viewed_month>.
-
-=head2 top_viewed_today( )
-
-This is deprecated.
-Please use L<WebService::YouTube::Feeds/top_viewed_today>.
-
-=head2 top_viewed_week( )
-
-This is deprecated.
-Please use L<WebService::YouTube::Feeds/top_viewed_week>.
-
 =head1 DIAGNOSTICS
 
-=over
-
-=item This is deprecated. Please see the document.
-
-Some method have been deprecated in Version 0.02.
-
-=back
+None.
 
 =head1 CONFIGURATION AND ENVIRONMENT
 

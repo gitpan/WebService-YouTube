@@ -1,12 +1,10 @@
 #!/usr/bin/env perl
 #
-# $Revision: 145 $
-# $Source$
-# $Date: 2006-09-11 21:39:07 +0900 (Mon, 11 Sep 2006) $
+# $Id: Makefile.PL 2 2007-01-07 14:27:35Z hironori.yoshida $
 #
 use strict;
 use warnings;
-our $VERSION = eval { require version; version::qv( (qw$Revision: 145 $)[1] / 1000 ) };
+our $VERSION = eval { require version; version::qv('1.0.0') };
 
 use inc::Module::Install;
 eval {
@@ -15,7 +13,7 @@ eval {
 };
 
 name 'WebService-YouTube';
-version '0.04';
+version "$VERSION";
 perl_version '5.006';
 all_from 'lib/WebService/YouTube.pm';
 
@@ -27,5 +25,6 @@ requires 'URI::Escape';
 requires 'XML::Simple';
 
 auto_install;
+use_test_base;
 
 WriteAll;

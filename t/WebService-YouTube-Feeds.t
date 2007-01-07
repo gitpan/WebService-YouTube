@@ -1,15 +1,13 @@
 #!/usr/bin/env perl
 #
-# $Revision: 139 $
-# $Source$
-# $Date: 2006-09-11 13:38:53 +0900 (Mon, 11 Sep 2006) $
+# $Id: WebService-YouTube-Feeds.t 2 2007-01-07 14:27:35Z hironori.yoshida $
 #
 use strict;
 use warnings;
-use version; our $VERSION = qv( (qw$Revision: 139 $)[1] / 1000 );
+use version; our $VERSION = qv('1.0.0');
 
 use blib;
-use Test::More tests => 16;
+use Test::Base tests => 16;
 
 use WebService::YouTube::Feeds;
 

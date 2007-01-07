@@ -2,11 +2,19 @@
 Revision history for WebService-YouTube
 =======================================
 
+1.0.0   2007-01-07
+    - Fixed the error which occurs when video_list has only one result.
+    - Changed to use Test::Base instead of Test::More.
+    - Deleted all the deprecated methods.
+    - Changed the rule of versioning.
+
 0.04    2006-09-11
     - Fixed the specification of the version number.
+
 0.03    2006-09-11
     - Added Module::Build support.
     - Added Module::AutoInstall support.
+
 0.02    2006-09-10
     - Changed the interface of WebService-YouTube dramatically.
     - Added WebService::YouTube::Videos

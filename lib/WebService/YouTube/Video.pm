@@ -1,12 +1,10 @@
 #
-# $Revision: 139 $
-# $Source$
-# $Date: 2006-09-11 13:38:53 +0900 (Mon, 11 Sep 2006) $
+# $Id: Video.pm 2 2007-01-07 14:27:35Z hironori.yoshida $
 #
 package WebService::YouTube::Video;
 use strict;
 use warnings;
-use version; our $VERSION = qv( (qw$Revision: 139 $)[1] / 1000 );
+use version; our $VERSION = qv('1.0.0');
 
 use base qw(Class::Accessor::Fast);
 
@@ -44,7 +42,7 @@ WebService::YouTube::Video - Video class for YouTube.
 
 =head1 VERSION
 
-This document describes WebService::YouTube::Video $Revision: 139 $
+This document describes WebService::YouTube::Video version 1.0.0
 
 =head1 SYNOPSIS
 
@@ -53,7 +51,7 @@ This document describes WebService::YouTube::Video $Revision: 139 $
 
 =head1 DESCRIPTION
 
-This is a class of YouTube video information.
+This is a video class for YouTube.
 
 =head1 SUBROUTINES/METHODS
 
@@ -96,9 +94,7 @@ Creates and returns a new WebService::YouTube::Video object.
 
 =head1 DIAGNOSTICS
 
-=over
-
-=back
+None.
 
 =head1 CONFIGURATION AND ENVIRONMENT
 

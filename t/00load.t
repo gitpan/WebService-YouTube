@@ -1,21 +1,19 @@
 #!/usr/bin/env perl
 #
-# $Revision: 139 $
-# $Source$
-# $Date: 2006-09-11 13:38:53 +0900 (Mon, 11 Sep 2006) $
+# $Id: 00load.t 2 2007-01-07 14:27:35Z hironori.yoshida $
 #
 use strict;
 use warnings;
-use version; our $VERSION = qv( (qw$Revision: 139 $)[1] / 1000 );
+use version; our $VERSION = qv('1.0.0');
 
 use blib;
 use English qw(-no_match_vars);
-use Test::More tests => 6;
+use Test::Base tests => 7;
 
 our $WHY_SKIP_SAWAMPERSAND;
 
 BEGIN {
-    if ( $ENV{TEST_MATCH_VARS} || $ENV{TEST_ALL} ) {
+    if ( $ENV{TEST_MATCH_VARS} || $ENV{TEST_ALL} || !$ENV{HARNESS_ACTIVE} ) {
         eval {
             require Devel::SawAmpersand;
             Devel::SawAmpersand->import(qw(sawampersand));
@@ -31,6 +29,7 @@ BEGIN {
 
     use_ok('WebService::YouTube');
     use_ok('WebService::YouTube::Feeds');
+    use_ok('WebService::YouTube::User');
     use_ok('WebService::YouTube::Util');
     use_ok('WebService::YouTube::Video');
     use_ok('WebService::YouTube::Videos');
@@ -41,5 +40,5 @@ SKIP: {
     if ($WHY_SKIP_SAWAMPERSAND) {
         skip $WHY_SKIP_SAWAMPERSAND, 1;
     }
-    isnt( sawampersand(), 1, q{$`, $&, and $' should not appear} ); ## no critic
+    ok( !sawampersand(), q{$`, $&, and $' should not appear} );    ## no critic
 }

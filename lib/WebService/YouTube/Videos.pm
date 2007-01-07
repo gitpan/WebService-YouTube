@@ -1,12 +1,10 @@
 #
-# $Revision: 139 $
-# $Source$
-# $Date: 2006-09-11 13:38:53 +0900 (Mon, 11 Sep 2006) $
+# $Id: Videos.pm 2 2007-01-07 14:27:35Z hironori.yoshida $
 #
 package WebService::YouTube::Videos;
 use strict;
 use warnings;
-use version; our $VERSION = qv( (qw$Revision: 139 $)[1] / 1000 );
+use version; our $VERSION = qv('1.0.0');
 
 use Carp;
 use LWP::UserAgent;
@@ -34,7 +32,7 @@ sub new {
 sub parse_xml {
     my ( $self, $xml ) = @_;
 
-    my $ut_response = XMLin( $xml, ForceArray => [qw(comment channel)] );
+    my $ut_response = XMLin( $xml, ForceArray => [qw(comment channel video)] );
 
     if ( !$ut_response ) {
         carp 'invalid XML';
@@ -162,7 +160,7 @@ WebService::YouTube::Videos - Perl interfece to youtube.videos.*
 
 =head1 VERSION
 
-This document describes WebService::YouTube::Videos $Revision: 139 $
+This document describes WebService::YouTube::Videos version 1.0.0
 
 =head1 SYNOPSIS
 
