@@ -1,14 +1,15 @@
 #
-# $Id: Util.pm 2 2007-01-07 14:27:35Z hironori.yoshida $
+# $Id: Util.pm 11 2007-04-09 04:34:01Z hironori.yoshida $
 #
 package WebService::YouTube::Util;
 use strict;
 use warnings;
-use version; our $VERSION = qv('1.0.0');
+use version; our $VERSION = qv('1.0.1');
 
 use Carp;
 use LWP::UserAgent;
 use URI::Escape qw(uri_escape uri_escape_utf8);
+use Encode;
 
 sub rss_uri {
     my ( $class, $type, $arg ) = @_;
@@ -17,7 +18,7 @@ sub rss_uri {
         croak "type of $type is not supported";
     }
 
-    if ( utf8::is_utf8($arg) ) {
+    if ( Encode::is_utf8($arg) ) {
         $arg = uri_escape_utf8($arg);
     }
     else {
@@ -37,7 +38,7 @@ sub rest_uri {
     if ($fields) {
         foreach my $key ( keys %{$fields} ) {
             my $value = $fields->{$key};
-            if ( utf8::is_utf8($value) ) {
+            if ( Encode::is_utf8($value) ) {
                 $value = uri_escape_utf8($value);
             }
             else {
@@ -118,7 +119,7 @@ WebService::YouTube::Util - Utility for WebService::YouTube
 
 =head1 VERSION
 
-This document describes WebService::YouTube::Util version 1.0.0
+This document describes WebService::YouTube::Util version 1.0.1
 
 =head1 SYNOPSIS
 
@@ -224,11 +225,11 @@ your bug as I make changes.
 
 =head1 AUTHOR
 
-Hironori Yoshida C<< <yoshida@cpan.org> >>
+Hironori Yoshida <yoshida@cpan.org>
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2006, Hironori Yoshida C<< <yoshida@cpan.org> >>. All rights reserved.
+Copyright 2006, Hironori Yoshida <yoshida@cpan.org>. All rights reserved.
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself. See L<perlartistic>.

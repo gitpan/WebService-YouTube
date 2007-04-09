@@ -1,10 +1,10 @@
 #
-# $Id: YouTube.pm 2 2007-01-07 14:27:35Z hironori.yoshida $
+# $Id: YouTube.pm 11 2007-04-09 04:34:01Z hironori.yoshida $
 #
 package WebService::YouTube;
 use strict;
 use warnings;
-use version; our $VERSION = qv('1.0.0');
+use version; our $VERSION = qv('1.0.1');
 
 use base qw(Class::Accessor::Fast);
 
@@ -38,7 +38,7 @@ WebService::YouTube - Perl interfece to YouTube
 
 =head1 VERSION
 
-This document describes WebService::YouTube version 1.0.0
+This document describes WebService::YouTube version 1.0.1
 
 =head1 SYNOPSIS
 
@@ -110,11 +110,11 @@ your bug as I make changes.
 
 =head1 AUTHOR
 
-Hironori Yoshida C<< <yoshida@cpan.org> >>
+Hironori Yoshida <yoshida@cpan.org>
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright (c) 2006, Hironori Yoshida C<< <yoshida@cpan.org> >>. All rights reserved.
+Copyright (c) 2006, Hironori Yoshida <yoshida@cpan.org>. All rights reserved.
 
 This module is free software; you can redistribute it and/or
 modify it under the same terms as Perl itself. See L<perlartistic>.

@@ -2,6 +2,11 @@
 Revision history for WebService-YouTube
 =======================================
 
+1.0.1   2007-04-09
+    - Fixed the namespace URI of the Media RSS.
+    - Applied the patch of RT#26073 for version compatibility.
+      (Thanks Mark Stosberg!)
+
 1.0.0   2007-01-07
     - Fixed the error which occurs when video_list has only one result.
     - Changed to use Test::Base instead of Test::More.

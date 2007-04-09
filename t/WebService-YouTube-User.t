@@ -1,10 +1,10 @@
 #!/usr/bin/env perl
 #
-# $Id: WebService-YouTube-User.t 2 2007-01-07 14:27:35Z hironori.yoshida $
+# $Id: WebService-YouTube-User.t 11 2007-04-09 04:34:01Z hironori.yoshida $
 #
 use strict;
 use warnings;
-use version; our $VERSION = qv('1.0.0');
+use version; our $VERSION = qv('1.0.1');
 
 use blib;
 use Test::Base tests => 4;

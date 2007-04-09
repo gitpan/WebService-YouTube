@@ -1,10 +1,10 @@
 #!/usr/bin/env perl
 #
-# $Id: WebService-YouTube-Videos.t 2 2007-01-07 14:27:35Z hironori.yoshida $
+# $Id: WebService-YouTube-Videos.t 11 2007-04-09 04:34:01Z hironori.yoshida $
 #
 use strict;
 use warnings;
-use version; our $VERSION = qv('1.0.0');
+use version; our $VERSION = qv('1.0.1');
 
 use blib;
 use Test::Base tests => 7;
@@ -29,7 +29,7 @@ SKIP: {
     my $api =
       WebService::YouTube::Videos->new( { dev_id => $ENV{TEST_YOUTUBE} } );
     my @videos = $api->list_featured;
-    cmp_ok( @videos, q{==}, 25, 'youtube.videos.list_featured' );
+    cmp_ok( @videos, q{==}, 100, 'youtube.videos.list_featured' );
 
     @videos = $api->list_by_user('youtuberocks');
     cmp_ok( @videos, q{==}, 0, 'youtube.videos.list_by_user' );

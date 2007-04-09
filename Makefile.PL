@@ -1,10 +1,9 @@
-#!/usr/bin/env perl
 #
-# $Id: Makefile.PL 2 2007-01-07 14:27:35Z hironori.yoshida $
+# $Id: Makefile.PL 11 2007-04-09 04:34:01Z hironori.yoshida $
 #
 use strict;
 use warnings;
-our $VERSION = eval { require version; version::qv('1.0.0') };
+our $VERSION = eval { require version; version::qv('1.0.1') };
 
 use inc::Module::Install;
 eval {

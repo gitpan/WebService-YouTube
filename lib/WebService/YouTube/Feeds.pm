@@ -1,10 +1,10 @@
 #
-# $Id: Feeds.pm 2 2007-01-07 14:27:35Z hironori.yoshida $
+# $Id: Feeds.pm 11 2007-04-09 04:34:01Z hironori.yoshida $
 #
 package WebService::YouTube::Feeds;
 use strict;
 use warnings;
-use version; our $VERSION = qv('1.0.0');
+use version; our $VERSION = qv('1.0.1');
 
 use Carp;
 use HTTP::Date;
@@ -71,7 +71,7 @@ sub parse_rss {
         carp qq{!$result->{channel}->{description}};
     }
 
-    my $mrss = 'http://search.yahoo.com/mrss';    # namespace
+    my $mrss = 'http://search.yahoo.com/mrss/';    # namespace
 
     # extract data
     my @videos;
@@ -176,7 +176,7 @@ WebService::YouTube::Feeds - Perl interfece to YouTube RSS Feeds
 
 =head1 VERSION
 
-This document describes WebService::YouTube::Feeds version 1.0.0
+This document describes WebService::YouTube::Feeds version 1.0.1
 
 =head1 SYNOPSIS
 
@@ -328,11 +328,11 @@ your bug as I make changes.
 
 =head1 AUTHOR
 
-Hironori Yoshida C<< <yoshida@cpan.org> >>
+Hironori Yoshida <yoshida@cpan.org>
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2006, Hironori Yoshida C<< <yoshida@cpan.org> >>. All rights reserved.
+Copyright 2006, Hironori Yoshida <yoshida@cpan.org>. All rights reserved.
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself. See L<perlartistic>.
