@@ -4,7 +4,7 @@
 package WebService::YouTube::Video;
 use strict;
 use warnings;
-use version; our $VERSION = qv('1.0.1');
+use version; our $VERSION = qv('1.0.2');
 
 use base qw(Class::Accessor::Fast);
 
@@ -42,7 +42,7 @@ WebService::YouTube::Video - Video class for YouTube.
 
 =head1 VERSION
 
-This document describes WebService::YouTube::Video version 1.0.1
+This document describes WebService::YouTube::Video version 1.0.2
 
 =head1 SYNOPSIS
 
@@ -124,9 +124,7 @@ Hironori Yoshida <yoshida@cpan.org>
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2006, Hironori Yoshida <yoshida@cpan.org>. All rights reserved.
-
-This program is free software; you can redistribute it and/or modify it
-under the same terms as Perl itself. See L<perlartistic>.
+This module is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself. See L<perlartistic>.
 
 =cut

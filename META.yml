@@ -1,6 +1,6 @@
 ---
 name: WebService-YouTube
-version: v1.0.1
+version: 1.0.2
 author:
   - 'Hironori Yoshida <yoshida@cpan.org>'
 abstract: Perl interfece to YouTube
@@ -9,6 +9,7 @@ resources:
   license: http://dev.perl.org/licenses/
 requires:
   Class::Accessor::Fast: 0
+  Encode: 0
   HTTP::Date: 0
   LWP::UserAgent: 0
   URI::Escape: 0
@@ -17,23 +18,23 @@ requires:
 provides:
   WebService::YouTube:
     file: lib/WebService/YouTube.pm
-    version: v1.0.1
+    version: 1.0.2
   WebService::YouTube::Feeds:
     file: lib/WebService/YouTube/Feeds.pm
-    version: v1.0.1
+    version: 1.0.2
   WebService::YouTube::User:
     file: lib/WebService/YouTube/User.pm
-    version: v1.0.1
+    version: 1.0.2
   WebService::YouTube::Util:
     file: lib/WebService/YouTube/Util.pm
-    version: v1.0.1
+    version: 1.0.2
   WebService::YouTube::Video:
     file: lib/WebService/YouTube/Video.pm
-    version: v1.0.1
+    version: 1.0.2
   WebService::YouTube::Videos:
     file: lib/WebService/YouTube/Videos.pm
-    version: v1.0.1
-generated_by: Module::Build version 0.2807
+    version: 1.0.2
+generated_by: Module::Build version 0.2808
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.2.html
   version: 1.2

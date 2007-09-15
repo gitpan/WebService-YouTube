@@ -2,6 +2,9 @@
 Revision history for WebService-YouTube
 =======================================
 
+1.0.2   2007-09-15
+    - Fixed W::Y::Util#get_video_uri.
+
 1.0.1   2007-04-09
     - Fixed the namespace URI of the Media RSS.
     - Applied the patch of RT#26073 for version compatibility.

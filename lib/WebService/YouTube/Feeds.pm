@@ -4,7 +4,7 @@
 package WebService::YouTube::Feeds;
 use strict;
 use warnings;
-use version; our $VERSION = qv('1.0.1');
+use version; our $VERSION = qv('1.0.2');
 
 use Carp;
 use HTTP::Date;
@@ -43,9 +43,9 @@ BEGIN {
 }
 
 sub new {
-    my $class = shift;
+    my ( $class, @args ) = @_;
 
-    my $self = $class->SUPER::new(@_);
+    my $self = $class->SUPER::new(@args);
     if ( !$self->ua ) {
         $self->ua( LWP::UserAgent->new );
     }
@@ -176,7 +176,7 @@ WebService::YouTube::Feeds - Perl interfece to YouTube RSS Feeds
 
 =head1 VERSION
 
-This document describes WebService::YouTube::Feeds version 1.0.1
+This document describes WebService::YouTube::Feeds version 1.0.2
 
 =head1 SYNOPSIS
 
@@ -332,9 +332,7 @@ Hironori Yoshida <yoshida@cpan.org>
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2006, Hironori Yoshida <yoshida@cpan.org>. All rights reserved.
-
-This program is free software; you can redistribute it and/or modify it
-under the same terms as Perl itself. See L<perlartistic>.
+This module is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself. See L<perlartistic>.
 
 =cut

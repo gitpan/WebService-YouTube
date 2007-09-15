@@ -3,6 +3,6 @@
 #
 use strict;
 use warnings;
-our $VERSION = eval { require version; version::qv('1.0.1') };
+our $VERSION = eval { require version; version::qv('1.0.2') };
 
 do 'Makefile.PL';

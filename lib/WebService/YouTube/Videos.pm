@@ -4,7 +4,7 @@
 package WebService::YouTube::Videos;
 use strict;
 use warnings;
-use version; our $VERSION = qv('1.0.1');
+use version; our $VERSION = qv('1.0.2');
 
 use Carp;
 use LWP::UserAgent;
@@ -17,9 +17,9 @@ use base qw(Class::Accessor::Fast);
 __PACKAGE__->mk_accessors(qw(dev_id ua));
 
 sub new {
-    my $class = shift;
+    my ( $class, @args ) = @_;
 
-    my $self = $class->SUPER::new(@_);
+    my $self = $class->SUPER::new(@args);
     if ( !$self->dev_id ) {
         croak 'dev_id is required';
     }
@@ -139,8 +139,7 @@ sub list_by_user {
 sub list_featured {
     my $self = shift;
 
-    my $uri =
-      WebService::YouTube::Util->rest_uri( $self->dev_id,
+    my $uri = WebService::YouTube::Util->rest_uri( $self->dev_id,
         'youtube.videos.list_featured' );
     my $res = $self->ua->get($uri);
     if ( !$res->is_success ) {
@@ -160,7 +159,7 @@ WebService::YouTube::Videos - Perl interfece to youtube.videos.*
 
 =head1 VERSION
 
-This document describes WebService::YouTube::Videos version 1.0.1
+This document describes WebService::YouTube::Videos version 1.0.2
 
 =head1 SYNOPSIS
 
@@ -299,9 +298,7 @@ Hironori Yoshida <yoshida@cpan.org>
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2006, Hironori Yoshida <yoshida@cpan.org>. All rights reserved.
-
-This program is free software; you can redistribute it and/or modify it
-under the same terms as Perl itself. See L<perlartistic>.
+This module is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself. See L<perlartistic>.
 
 =cut

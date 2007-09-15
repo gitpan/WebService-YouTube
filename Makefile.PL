@@ -3,7 +3,7 @@
 #
 use strict;
 use warnings;
-our $VERSION = eval { require version; version::qv('1.0.1') };
+our $VERSION = eval { require version; version::qv('1.0.2') };
 
 use inc::Module::Install;
 eval {
@@ -18,6 +18,7 @@ all_from 'lib/WebService/YouTube.pm';
 
 requires 'version';
 requires 'Class::Accessor::Fast';
+requires 'Encode';
 requires 'HTTP::Date';
 requires 'LWP::UserAgent';
 requires 'URI::Escape';

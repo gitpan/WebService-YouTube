@@ -4,12 +4,12 @@
 package WebService::YouTube::Util;
 use strict;
 use warnings;
-use version; our $VERSION = qv('1.0.1');
+use version; our $VERSION = qv('1.0.2');
 
 use Carp;
 use LWP::UserAgent;
 use URI::Escape qw(uri_escape uri_escape_utf8);
-use Encode;
+use Encode ();
 
 sub rss_uri {
     my ( $class, $type, $arg ) = @_;
@@ -80,6 +80,9 @@ sub get_video_uri {
     if ( $content =~ m{"/player2\.swf\?([^"]+)",\s*"movie_player"}msx ) {
         return "http://youtube.com/get_video.php?$1";
     }
+    if ( $content =~ m{\bt:(['"])(.+?)\1}msx ) {
+        return "http://youtube.com/get_video.php?video_id=$video_id&t=$2";
+    }
     if ( $content =~ m{class="errorBox"[^>]*>\s*([^<]+?)\s*<}msx ) {
         carp "$video_id: $1";
         return;
@@ -119,7 +122,7 @@ WebService::YouTube::Util - Utility for WebService::YouTube
 
 =head1 VERSION
 
-This document describes WebService::YouTube::Util version 1.0.1
+This document describes WebService::YouTube::Util version 1.0.2
 
 =head1 SYNOPSIS
 
@@ -229,9 +232,7 @@ Hironori Yoshida <yoshida@cpan.org>
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2006, Hironori Yoshida <yoshida@cpan.org>. All rights reserved.
-
-This program is free software; you can redistribute it and/or modify it
-under the same terms as Perl itself. See L<perlartistic>.
+This module is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself. See L<perlartistic>.
 
 =cut

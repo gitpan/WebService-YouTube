@@ -4,7 +4,7 @@
 #
 use strict;
 use warnings;
-use version; our $VERSION = qv('1.0.1');
+use version; our $VERSION = qv('1.0.2');
 
 use blib;
 use Test::Base tests => 5;
@@ -34,7 +34,7 @@ is(
 
 SKIP: {
     if ( !$ENV{TEST_YOUTUBE} ) {
-        skip 'set TEST_YOUTUBE for testing WebService::YouTube::Videos', 1;
+        skip 'set TEST_YOUTUBE for testing WebService::YouTube::Util', 1;
     }
     ok( WebService::YouTube::Util->get_video_uri('rdwz7QiG0lk'),
         'Got URI of the video' );

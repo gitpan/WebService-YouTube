@@ -4,7 +4,7 @@
 package WebService::YouTube;
 use strict;
 use warnings;
-use version; our $VERSION = qv('1.0.1');
+use version; our $VERSION = qv('1.0.2');
 
 use base qw(Class::Accessor::Fast);
 
@@ -38,7 +38,7 @@ WebService::YouTube - Perl interfece to YouTube
 
 =head1 VERSION
 
-This document describes WebService::YouTube version 1.0.1
+This document describes WebService::YouTube version 1.0.2
 
 =head1 SYNOPSIS
 
@@ -56,6 +56,9 @@ This document describes WebService::YouTube version 1.0.1
 
 This is a Perl interface to YouTube API and RSS.
 See Developers Page L<http://youtube.com/dev> and About RSS L<http://www.youtube.com/rssls> for details.
+
+B<I<This module support only Legacy API, does not support YouTube Data API based on Google data protocol.>>
+See YouTube Data API Overview L<http://code.google.com/apis/youtube/overview.html> for details.
 
 =head1 SUBROUTINES/METHODS
 
@@ -113,8 +116,6 @@ your bug as I make changes.
 Hironori Yoshida <yoshida@cpan.org>
 
 =head1 LICENSE AND COPYRIGHT
-
-Copyright (c) 2006, Hironori Yoshida <yoshida@cpan.org>. All rights reserved.
 
 This module is free software; you can redistribute it and/or
 modify it under the same terms as Perl itself. See L<perlartistic>.
