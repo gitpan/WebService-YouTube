@@ -4,7 +4,7 @@
 package WebService::YouTube::Util;
 use strict;
 use warnings;
-use version; our $VERSION = qv('1.0.2');
+use version; our $VERSION = qv('1.0.3');
 
 use Carp;
 use LWP::UserAgent;
@@ -80,7 +80,7 @@ sub get_video_uri {
     if ( $content =~ m{"/player2\.swf\?([^"]+)",\s*"movie_player"}msx ) {
         return "http://youtube.com/get_video.php?$1";
     }
-    if ( $content =~ m{\bt:(['"])(.+?)\1}msx ) {
+    if ( $content =~ m{\bt\b[^:]*:\s*(['"])(.+?)\1}msx ) {
         return "http://youtube.com/get_video.php?video_id=$video_id&t=$2";
     }
     if ( $content =~ m{class="errorBox"[^>]*>\s*([^<]+?)\s*<}msx ) {
@@ -122,7 +122,7 @@ WebService::YouTube::Util - Utility for WebService::YouTube
 
 =head1 VERSION
 
-This document describes WebService::YouTube::Util version 1.0.2
+This document describes WebService::YouTube::Util version 1.0.3
 
 =head1 SYNOPSIS
 

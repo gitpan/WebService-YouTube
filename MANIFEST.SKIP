@@ -30,4 +30,4 @@
 \bcover_db\b
 
 # Avoid dist files.
-\bWebService-YouTube-v.*
+\bWebService-YouTube-v?[\d\.]+(/|tar)

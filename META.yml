@@ -1,12 +1,19 @@
 ---
-name: WebService-YouTube
-version: 1.0.2
+abstract: 'Perl interfece to YouTube'
 author:
   - 'Hironori Yoshida <yoshida@cpan.org>'
-abstract: Perl interfece to YouTube
+distribution_type: module
+generated_by: 'Module::Install version 0.77'
 license: perl
-resources:
-  license: http://dev.perl.org/licenses/
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: WebService-YouTube
+no_index:
+  directory:
+    - inc
+    - t
+    - examples
 requires:
   Class::Accessor::Fast: 0
   Encode: 0
@@ -14,27 +21,8 @@ requires:
   LWP::UserAgent: 0
   URI::Escape: 0
   XML::Simple: 0
+  perl: 5.6.0
   version: 0
-provides:
-  WebService::YouTube:
-    file: lib/WebService/YouTube.pm
-    version: 1.0.2
-  WebService::YouTube::Feeds:
-    file: lib/WebService/YouTube/Feeds.pm
-    version: 1.0.2
-  WebService::YouTube::User:
-    file: lib/WebService/YouTube/User.pm
-    version: 1.0.2
-  WebService::YouTube::Util:
-    file: lib/WebService/YouTube/Util.pm
-    version: 1.0.2
-  WebService::YouTube::Video:
-    file: lib/WebService/YouTube/Video.pm
-    version: 1.0.2
-  WebService::YouTube::Videos:
-    file: lib/WebService/YouTube/Videos.pm
-    version: 1.0.2
-generated_by: Module::Build version 0.2808
-meta-spec:
-  url: http://module-build.sourceforge.net/META-spec-v1.2.html
-  version: 1.2
+resources:
+  license: http://dev.perl.org/licenses/
+version: 1.0.3

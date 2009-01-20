@@ -4,7 +4,7 @@
 package WebService::YouTube::Videos;
 use strict;
 use warnings;
-use version; our $VERSION = qv('1.0.2');
+use version; our $VERSION = qv('1.0.3');
 
 use Carp;
 use LWP::UserAgent;
@@ -159,7 +159,7 @@ WebService::YouTube::Videos - Perl interfece to youtube.videos.*
 
 =head1 VERSION
 
-This document describes WebService::YouTube::Videos version 1.0.2
+This document describes WebService::YouTube::Videos version 1.0.3
 
 =head1 SYNOPSIS
 

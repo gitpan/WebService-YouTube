@@ -4,7 +4,7 @@
 package WebService::YouTube::Video;
 use strict;
 use warnings;
-use version; our $VERSION = qv('1.0.2');
+use version; our $VERSION = qv('1.0.3');
 
 use base qw(Class::Accessor::Fast);
 
@@ -42,7 +42,7 @@ WebService::YouTube::Video - Video class for YouTube.
 
 =head1 VERSION
 
-This document describes WebService::YouTube::Video version 1.0.2
+This document describes WebService::YouTube::Video version 1.0.3
 
 =head1 SYNOPSIS
 

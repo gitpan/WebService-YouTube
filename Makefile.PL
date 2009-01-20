@@ -1,9 +1,11 @@
 #
 # $Id: Makefile.PL 11 2007-04-09 04:34:01Z hironori.yoshida $
 #
+package main;
 use strict;
 use warnings;
-our $VERSION = eval { require version; version::qv('1.0.2') };
+use utf8;
+our $VERSION = eval { require version; version::qv('1.0.3') };
 
 use inc::Module::Install;
 eval {
@@ -24,7 +26,8 @@ requires 'LWP::UserAgent';
 requires 'URI::Escape';
 requires 'XML::Simple';
 
-auto_install;
 use_test_base;
+auto_include;
+auto_install;
 
 WriteAll;

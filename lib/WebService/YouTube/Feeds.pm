@@ -4,7 +4,7 @@
 package WebService::YouTube::Feeds;
 use strict;
 use warnings;
-use version; our $VERSION = qv('1.0.2');
+use version; our $VERSION = qv('1.0.3');
 
 use Carp;
 use HTTP::Date;
@@ -176,7 +176,7 @@ WebService::YouTube::Feeds - Perl interfece to YouTube RSS Feeds
 
 =head1 VERSION
 
-This document describes WebService::YouTube::Feeds version 1.0.2
+This document describes WebService::YouTube::Feeds version 1.0.3
 
 =head1 SYNOPSIS
 

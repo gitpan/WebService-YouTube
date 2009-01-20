@@ -4,7 +4,7 @@
 #
 use strict;
 use warnings;
-use version; our $VERSION = qv('1.0.2');
+use version; our $VERSION = qv('1.0.3');
 
 use blib;
 use Test::Base tests => 6;
